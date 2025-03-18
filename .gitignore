@@ -44,6 +44,28 @@ context.md
 _update-notifier*
 repomix-output*
 
-# Other generated files
+# Specifically ignore all XML files
+*.xml
+
+# Database files
 *.sql*
+*.sqlite*
+*database.sql*
+embedding_database*
+
+# Other generated files
 *.pb
+/903*
+/cfba*
+/99d4*
+/190f*
+/da78*
+/674d*
+/1815*
+/2049*
+/dbca*
+/0d6d*
+
+# Everything in specific directories
+/.codeium/**
+/scripts/**
