@@ -38,11 +38,12 @@ next-env.d.ts
 .vscode
 *.swp
 *.swo
+.codeium/
+user_settings.pb
+context.md
+_update-notifier*
+repomix-output*
 
-# logs
-logs
-*.log
-
-# cache
-.npm
-.eslintcache
+# Other generated files
+*.sql*
+*.pb
