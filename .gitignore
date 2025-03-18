@@ -5,6 +5,8 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
 
 # next.js
 /.next/
@@ -53,6 +55,10 @@ repomix-output*
 *database.sql*
 embedding_database*
 
+# Playwright
+/playwright-screenshots/*
+!/playwright-screenshots/.gitkeep
+
 # Other generated files
 *.pb
 /903*
@@ -68,4 +74,3 @@ embedding_database*
 
 # Everything in specific directories
 /.codeium/**
-/scripts/**

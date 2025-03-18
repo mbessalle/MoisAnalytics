@@ -2,23 +2,20 @@
 
 A professional website for Mois Analytics, a data analytics consultancy based in The Netherlands.
 
-## Context Priming for Claude Code
+## Context Priming for Windsurf
 
-When working with this codebase, Claude should:
+When working with this codebase in Windsurf, the AI assistant should:
 
 1. First, read this README.md file for an overview of the project
-2. Review the `project-context.md` file (created by running `npm run generate-context`) for a complete view of all source files
+2. Access the context file at `/home/moises/.codeium/windsurf/memories/mois_analytics_context.md` for comprehensive project information
 3. Pay special attention to these files in the following order:
    - `prisma/schema.prisma` - Database schema
    - `tailwind.config.js` - Styling configuration
-   - `src/app/layout.tsx` - Root layout (when implemented)
-   - `src/lib/db.ts` - Database connection utility (when implemented)
-   - `src/lib/utils.ts` - Common utility functions (when implemented)
-4. Utilize the MCP servers located in `mcp/` directory for:
-   - Database operations: `npm run mcp:db <handler> <params>`
-   - UI component operations: `npm run mcp:ui <handler> <params>`
-   - See the MCP client config in `mcp/client-config.json` for details
-5. Follow the project structure and guidelines outlined in the project specifications
+   - `src/app/layout.tsx` - Root layout
+   - `src/lib/db.ts` - Database connection utility
+   - `src/lib/utils.ts` - Common utility functions
+   - `src/lib/auth.ts` - Authentication configuration
+4. Follow the project structure and guidelines outlined in this README and the project specifications
 
 ## Project Overview
 
@@ -69,48 +66,65 @@ This project follows a modular architecture with:
 - Server Components where appropriate
 - Client Components when interactivity is needed
 
-## MCP Tooling Integration
+## Windsurf Integration
 
-This project uses Model Context Protocol (MCP) for enhanced development with Claude Code:
+This project is optimized for development with Windsurf, the agentic IDE powered by Codeium:
 
-### Database MCP Server
-Access database operations with:
+### Database Operations
+Use the following commands for database operations:
 ```bash
-npm run mcp:db <handler> <params>
+# Run Prisma migrations
+npx prisma migrate dev
+
+# Generate Prisma client
+npx prisma generate
+
+# Create a new migration
+npx prisma migrate dev --name <migration-name>
+
+# Seed the database
+npx prisma db seed
+
+# View the database schema in Prisma Studio
+npx prisma studio
 ```
 
-Available handlers:
-- `runMigrations` - Run Prisma migrations
-- `generateClient` - Generate Prisma client
-- `createMigration` - Create a new migration
-- `seedDatabase` - Seed the database
-- `getSchema` - Get the database schema
-- `listServices` - List all services
-- `listProjects` - List all projects
-- `listTestimonials` - List all testimonials
-- `listContactSubmissions` - List all contact submissions
+### Components
+The project uses both shadcn/ui and Aceternity UI components:
 
-### UI MCP Server
-Access UI component operations with:
+#### shadcn/ui Components
+Add shadcn/ui components with:
 ```bash
-npm run mcp:ui <handler> <params>
+npx shadcn-ui@latest add <component-name>
 ```
 
-Available handlers:
-- `generateShadcnComponent` - Generate a shadcn/ui component
-- `listShadcnComponents` - List available shadcn/ui components
-- `createCustomComponent` - Create a custom component
-- `createAceternityComponent` - Create an Aceternity UI component
-- `listExistingComponents` - List existing components
+Available components include:
+- Button
+- Card
+- Dialog
+- Dropdown Menu
+- Form
+- Input
+- Tabs
+- Toast
+- and many more...
 
-## Context Generation
-
-To update the project context file for AI tools:
-```bash
-npm run generate-context
+#### Aceternity UI Components
+Custom Aceternity UI components are located in:
+```
+src/components/aceternity/
 ```
 
-This will create `project-context.md` with a comprehensive view of the codebase.
+These provide modern, animated UI elements to enhance the user experience.
+
+## Context Management
+
+The Windsurf context file is maintained at:
+```
+/home/moises/.codeium/windsurf/memories/mois_analytics_context.md
+```
+
+This file contains comprehensive information about the project structure, technologies, and development guidelines.
 
 ## Getting Started
 
