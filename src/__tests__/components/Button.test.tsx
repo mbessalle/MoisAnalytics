@@ -7,7 +7,7 @@ describe('Button Component', () => {
     render(<Button>Click me</Button>);
     const button = screen.getByRole('button', { name: /click me/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-primary');
+    expect(button).toHaveClass('bg-blue-500');
   });
 
   it('applies variant classes correctly', () => {
@@ -43,16 +43,22 @@ describe('Button Component', () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
+  it('applies variant classes correctly', () => {
+    render(<Button variant="destructive">Destructive</Button>);
+    const button = screen.getByRole('button', { name: /destructive/i });
+    expect(button).toHaveClass('bg-red-500');
+  });
+
   it('renders as a different element when asChild is true', () => {
     render(
       <Button asChild>
-        <a href="/test">Link Button</a>
+        <a href="/test">Test Link</a>
       </Button>
     );
     
-    const link = screen.getByRole('link', { name: /link button/i });
+    const link = screen.getByRole('link', { name: /test link/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/test');
-    expect(link).toHaveClass('bg-primary');
+    expect(link).toHaveClass('bg-blue-500');
   });
 });
