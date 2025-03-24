@@ -2,6 +2,19 @@ import { NextRequest } from 'next/server';
 import { POST } from '@/app/api/contact/route';
 import { prisma } from '@/lib/db';
 
+// Mock Next.js modules
+jest.mock('next/server', () => ({
+  NextRequest: jest.fn(),
+  NextResponse: {
+    json: jest.fn().mockImplementation((data, options) => {
+      return {
+        status: options?.status || 200,
+        json: async () => data,
+      };
+    }),
+  },
+}));
+
 // Mock Prisma
 jest.mock('@/lib/db', () => ({
   prisma: {
@@ -15,7 +28,7 @@ jest.mock('@/lib/db', () => ({
 const createMockRequest = (body: any) => {
   return {
     json: jest.fn().mockResolvedValue(body),
-  } as unknown as Request;
+  } as unknown as NextRequest;
 };
 
 describe('Contact API', () => {

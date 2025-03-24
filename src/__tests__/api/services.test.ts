@@ -2,6 +2,19 @@ import { NextRequest } from 'next/server';
 import { GET } from '@/app/api/services/route';
 import { prisma } from '@/lib/db';
 
+// Mock Next.js modules
+jest.mock('next/server', () => ({
+  NextRequest: jest.fn(),
+  NextResponse: {
+    json: jest.fn().mockImplementation((data, options) => {
+      return {
+        status: options?.status || 200,
+        json: async () => data,
+      };
+    }),
+  },
+}));
+
 // Mock Prisma
 jest.mock('@/lib/db', () => ({
   prisma: {
